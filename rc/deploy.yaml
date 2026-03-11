@@ -1,0 +1,29 @@
+project_id: 0404b4fb-07af-4124-a8cc-12641ac734a9
+
+module:
+  name: pipeline
+  description: CV extraction and hireability scoring for AI startups
+  requirements: pyyaml
+  files:
+    - pipeline/scorer.py
+    - pipeline/__init__.py
+
+recipe:
+  name: cv-scoring
+  display_name: CV Hireability Scoring
+  runner: pipeline/runner.py
+  requirements:
+    - pyyaml
+    - google-genai
+    - pandas
+
+artifacts:
+  name: cv-pipeline-config
+  files:
+    - pipeline/config.yaml
+    - data/colleges.json
+    - data/companies.json
+    - data/company_roles.json
+    - data/degrees.json
+    - CV PDFs/Ashutosh Tripathi.pdf
+    - CV PDFs/Ravi Prakash Tripathi.pdf

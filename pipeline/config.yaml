@@ -1,0 +1,105 @@
+name: CV Extraction Project
+
+data:
+  pdfs: ./CV PDFs
+  ground_truth: ./ground_truth.json
+  outputs: ./outputs
+
+system_prompt: |
+  You are extracting structured data from a candidate's CV/resume PDF.
+
+  DOCUMENT STRUCTURE:
+  - The document is a professional resume/CV, typically 1-3 pages
+  - It contains sections like Summary/About Me, Experience, Education, Skills, Projects
+  - Experience entries list company name, role/title, dates, and bullet points
+  - Education entries list institution name, degree, field of study, and optionally CGPA/GPA
+
+  EXTRACTION RULES:
+  - Extract the candidate's full name from the top/header of the resume
+  - For years_of_experience: extract the number stated in the summary/about section (e.g., "8+ years" -> "8+", "5.5+ years" -> "5.5+"). If not explicitly stated, return null.
+  - For education: extract each degree listed. College is the institution name. Degree is the qualification type (e.g., "Bachelor of Technology", "Post Graduate Program"). Field of study is the specialization (e.g., "CSE", "Artificial Intelligence"). CGPA is the grade if mentioned, otherwise null.
+  - For experience: extract every professional role listed. Company is the organization name. Role is the job title exactly as written.
+  - Return null for any field that is missing or not clearly present in the document
+  - Do NOT infer or guess values — only extract what is explicitly written
+
+schema:
+  type: object
+  properties:
+    candidate_info:
+      type: object
+      description: Basic candidate information from the resume header and summary
+      properties:
+        candidate_name:
+          type: string
+          description: Full name of the candidate, from the top/header of the resume
+        years_of_experience:
+          type: string
+          description: Total years of experience as stated in the summary/about section (e.g., "8+", "5.5+", "10"). Null if not explicitly mentioned.
+    education:
+      type: array
+      description: All education entries listed in the Education section
+      items:
+        type: object
+        properties:
+          college:
+            type: string
+            description: Name of the educational institution
+          degree:
+            type: string
+            description: Type of degree or qualification
+          field_of_study:
+            type: string
+            description: Major, specialization, or field of study. Null if not specified.
+          cgpa:
+            type: string
+            description: CGPA, GPA, or percentage score if mentioned. Null if not listed.
+    experience:
+      type: array
+      description: All professional experience entries, in order they appear
+      items:
+        type: object
+        properties:
+          company:
+            type: string
+            description: Name of the company or organization
+          role:
+            type: string
+            description: Job title or designation exactly as written
+
+evaluation:
+  field_types:
+    candidate_name: fuzzy_name
+    college: fuzzy_name
+    company: fuzzy_name
+    role: fuzzy_name
+    degree: fuzzy_name
+  array_scoring:
+    education:
+      fields: [college, degree, field_of_study, cgpa]
+      key_field: college
+    experience:
+      fields: [company, role]
+      key_field: company
+
+normalization:
+  education.college:
+    rules:
+      - "strip:\\s*\\([^)]*\\)"
+    catalog_file: ./data/colleges.json
+    threshold: 0.5
+  education.degree:
+    catalog_file: ./data/degrees.json
+    threshold: 0.5
+  experience.company:
+    rules:
+      - "replace:\\s+: "
+    catalog_file: ./data/companies.json
+    threshold: 0.6
+  experience.role:
+    rules:
+      - "replace:\\s*/\\s*:/ "
+    lookup:
+      file: ./data/company_roles.json
+      key_field: company
+      value_field: roles
+      threshold: 0.6
