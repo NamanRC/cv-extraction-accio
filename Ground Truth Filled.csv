@@ -1,0 +1,35 @@
+doc_id,section,field,index,value
+Ashutosh,candidate_info,candidate_name,,Ashutosh Tripathi
+Ashutosh,candidate_info,years_of_experience,,8+
+Ashutosh,education,college,0,University of Texas
+Ashutosh,education,degree,0,Post Graduate
+Ashutosh,education,field_of_study,0,Artificial Intelligence
+Ashutosh,education,cgpa,0,
+Ashutosh,education,college,1,"Indian Institute of Technology, Patna"
+Ashutosh,education,degree,1,Bachelor of Technology
+Ashutosh,education,field_of_study,1,CSE
+Ashutosh,education,cgpa,1,
+Ashutosh,experience,company,0,Lyca Mobile
+Ashutosh,experience,role,0,AI Architect
+Ashutosh,experience,company,1,Rakuten Mobile
+Ashutosh,experience,role,1,Lead Data Scientist
+Ashutosh,experience,company,2,Asurion
+Ashutosh,experience,role,2,Senior Data Scientist
+Ashutosh,experience,company,3,Cybo
+Ashutosh,experience,role,3,AI Consultant
+Ashutosh,experience,company,4,Rakuten Mobile
+Ashutosh,experience,role,4,Data Scientist
+Ashutosh,experience,company,5,Samsung Research
+Ashutosh,experience,role,5,Data Scientist
+Ravi,candidate_info,candidate_name,,Ravi Prakash Tripathi
+Ravi,candidate_info,years_of_experience,,5.5+
+Ravi,education,college,0,"Indian Institute of Technology, Kanpur"
+Ravi,education,degree,0,Bachelor of Technology
+Ravi,education,field_of_study,0,
+Ravi,education,cgpa,0,
+Ravi,experience,company,0,Present .AI PVT. LTD.
+Ravi,experience,role,0,Senior Data Scientist
+Ravi,experience,company,1,Quaraai tech PVT. LTD.
+Ravi,experience,role,1,Senior Data Scientist/ Data Scientist
+Ravi,experience,company,2,Nobroker Technology Solutions Pvt. LTD.
+Ravi,experience,role,2,Data Scientist/ Associate Data Scientist

@@ -1,0 +1,6 @@
+.env
+.cache/
+outputs/
+eval_details.jsonl
+.DS_Store
+__pycache__/

@@ -1,0 +1,49 @@
+{
+  "Ashutosh": {
+    "candidate_info": {
+      "candidate_name": "Ashutosh Tripathi",
+      "years_of_experience": "8+"
+    },
+    "education": [
+      {
+        "college": "University of Texas",
+        "degree": "Post Graduate",
+        "field_of_study": "Artificial Intelligence",
+        "cgpa": null
+      },
+      {
+        "college": "Indian Institute of Technology, Patna",
+        "degree": "Bachelor of Technology",
+        "field_of_study": "CSE",
+        "cgpa": null
+      }
+    ],
+    "experience": [
+      {"company": "Lyca Mobile", "role": "AI Architect"},
+      {"company": "Rakuten Mobile", "role": "Lead Data Scientist"},
+      {"company": "Asurion", "role": "Senior Data Scientist"},
+      {"company": "Cybo", "role": "AI Consultant"},
+      {"company": "Rakuten Mobile", "role": "Data Scientist"},
+      {"company": "Samsung Research", "role": "Data Scientist"}
+    ]
+  },
+  "Ravi": {
+    "candidate_info": {
+      "candidate_name": "Ravi Prakash Tripathi",
+      "years_of_experience": "5.5+"
+    },
+    "education": [
+      {
+        "college": "Indian Institute of Technology, Kanpur",
+        "degree": "Bachelor of Technology",
+        "field_of_study": null,
+        "cgpa": null
+      }
+    ],
+    "experience": [
+      {"company": "Present .AI PVT. LTD.", "role": "Senior Data Scientist"},
+      {"company": "Quaraai tech PVT. LTD.", "role": "Senior Data Scientist/ Data Scientist"},
+      {"company": "Nobroker Technology Solutions Pvt. LTD.", "role": "Data Scientist/ Associate Data Scientist"}
+    ]
+  }
+}
