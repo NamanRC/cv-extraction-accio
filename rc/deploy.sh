@@ -193,7 +193,8 @@ else
   api -X POST "${AUTH[@]}" "$API_HOST/api/v2/artifacts/empty-folder/$ARTIFACT_NAME" > /dev/null 2>&1 || true
 
   for f in "${ARTIFACT_FILES_EXIST[@]}"; do
-    upload_artifact_file "$f" "$ARTIFACT_NAME/$(basename "$f")"
+    # Preserve relative paths so pipeline code can fetch subfolders (e.g., "CV PDFs/...").
+    upload_artifact_file "$f" "$ARTIFACT_NAME/$f"
   done
   [ -n "$ARTIFACT_HASH" ] && set_cached_hash artifacts "$ARTIFACT_HASH"
 fi
